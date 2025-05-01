@@ -4,8 +4,11 @@ using ScreenSound.Modelos;
 
 try
 {
-    var connection = new Connection();
-    var listaArtistas = connection.Listar();
+    var artistaDAL = new ArtistaDAL();
+    var artistaParaAdd = new Artista("Scorpions", "Scorpions é uma banda Alemã de rock, originária de Hanôver, fundada em 1965 por Rudolf Schenker, sendo a primeira banda de hard rock formada no país germânico");
+    artistaDAL.AdicionarArtista(artistaParaAdd);
+
+    var listaArtistas = artistaDAL.Listar();
 
     foreach ( var artist in listaArtistas )
     {
