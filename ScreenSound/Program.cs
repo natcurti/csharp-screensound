@@ -4,16 +4,23 @@ using ScreenSound.Modelos;
 
 try
 {
-    var artistaDAL = new ArtistaDAL();
-    var artistaParaAdd = new Artista("Scorpions", "Scorpions é uma banda Alemã de rock, originária de Hanôver, fundada em 1965 por Rudolf Schenker, sendo a primeira banda de hard rock formada no país germânico");
-    artistaDAL.AdicionarArtista(artistaParaAdd);
+    var context = new ScreenSoundContext();
+    var artistaDAL = new ArtistaDAL(context);
 
-    var listaArtistas = artistaDAL.Listar();
+    Artista novoArtista = new Artista("Scorpions", "Scorpions é uma banda muito legal e interessante") { Id = 1002};
 
-    foreach ( var artist in listaArtistas )
-    {
-        Console.WriteLine(artist);
-    }
+    //artistaDAL.AdicionarArtista(novoArtista);
+    //artistaDAL.AtualizarArtista(novoArtista);
+    //artistaDAL.DeletarArtista(novoArtista);
+
+    //var listaArtistas = artistaDAL.Listar();
+    //foreach (var artist in listaArtistas)
+    //{
+    //    Console.WriteLine(artist);
+    //}
+
+    Artista artistaBuscado = artistaDAL.RecuperarPeloNome("Bon Jovi")!;
+    Console.WriteLine(artistaBuscado!.ToString());
 }
 catch (Exception ex)
 {
